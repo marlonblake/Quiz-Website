@@ -1,0 +1,48 @@
+body {
+    background-color: #3d3d3d;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-size: medium;
+}
+
+button {
+    background: none;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.checkBtn, .nextBtn{
+    margin-top: 50px;
+    margin-right: 20px;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+.active, .btn:hover {
+    background-color: white;
+    color: #3d3d3d;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.flex-container div {
+    background: none;
+    text-align: center;
+    border: 2px solid;
+    border-color: white;
+    border-radius: 10px;
+    color: white;
+    margin: 10px;
+    padding: 20px;
+    
+}
+
+.hidden-content {
+    display: none;
+}
