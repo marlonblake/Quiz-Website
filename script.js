@@ -1,44 +1,28 @@
 const questionBox = document.getElementById("question-box");
 const showQuestion = document.getElementById("question");
 const anwBtns = document.getElementsByClassName("btn");
-const checkBtn = document.getElementById("check-btn");
 const nextBtn = document.getElementById("next-btn");
-const resultBox = document.getElementById("result-box");
-let current = document.getElementsByClassName("active");
+const remainingQuestions = document.getElementById("remaining-questions");
+const score = document.getElementById("score");
+const current = document.getElementsByClassName("active");
 
-let result = "";
 let questionIndex = 0;
+let result = 0;
 
 // Rendering questions that saved in question.js as javascript objects.
 
 function renderQuestion() {
-    if (questionIndex > myQuestions.length) return; 
+    if (questionIndex > myQuestions.length) return;
+      remainingQuestions.textContent = myQuestions.length - questionIndex;
       let q = myQuestions[questionIndex];
       showQuestion.innerHTML = q.question;
 // Convert the object entries into an array and use forEach
       Object.entries(q.answers).forEach(([key, value]) => {
-        let q = document.getElementById(key);
-        q.textContent = value;
+        let answersArray = document.getElementById(key);
+        answersArray.textContent = value;
       });
     }
 renderQuestion()
-
-// Click function for go to next question.
-
-nextBtn.addEventListener("click", function() {
-
-  if (myQuestions.length === questionIndex + 1) {
-    questionBox.textContent = "Well Done!!";
-    nextBtn.textContent = "AGAIN";
-    resultBox.textContent = "END.";
-
-  } else {
-    questionIndex++;
-    resultBox.textContent = "Click to Check!";
-    current[0].className = current[0].className.replace(" active", "");
-    renderQuestion();
-  }
-});
 
 // Keeping clicked button/answer highlighted. CSS has also been used.
 
@@ -51,16 +35,29 @@ for (let i = 0; i < anwBtns.length; i++) {
   });
 }
 
-// Check function that campare that selected answer and the correct answer when button was clicked. 
+// Click function for go to next question. 
 
-checkBtn.addEventListener("click", function(){
+nextBtn.addEventListener("click", function () {
+  
     let q = myQuestions[questionIndex];
-    let answer = current[0].textContent;
-    let correct = document.getElementById(q.correctAnswer).textContent;
+    let answer = current[0];
+    let correct = document.getElementById(q.correctAnswer);
+
     if (answer === correct) {
-        result = "Correct :)";
-    } else {
-        result = "Incorrect :(";   
+        result++;
+        correct.style.removeProperty("background-color");
     }
-    resultBox.textContent = result;
+
+    current[0].className = current[0].className.replace(" active", "");
+    questionIndex++;
+
+    if (questionIndex === myQuestions.length) {
+        questionBox.textContent = "Well Done!!";
+        nextBtn.textContent = "AGAIN";
+        remainingQuestions.textContent = 0;
+    } else {
+        renderQuestion();
+    }
+
+    score.textContent = result;
 });
