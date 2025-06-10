@@ -4,11 +4,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Main</title>
+        <title>QUIZ</title>
         <link rel="icon" href="icon.ico">
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
+        <div class="topnav">
+            <img src="icon.ico" class="logo">
+            <button class="top-right-button" id="mode" onclick="myFunction()">Dark</button>
+        </div>
+
+        <div id="quiz-box">
         <h1 id="heading">General Questions</h1>
         <div id="question-box">
             <p id="question"></p>
@@ -17,12 +23,28 @@
             <button id="c" class="btn"></button>
             <button id="d" class="btn"></button>
         </div>
-        <div>
-            <button class="checkBtn" id="check-btn">CHECK</button>
-            <button class="nextBtn" id="next-btn">NEXT</button>
-            <p id="result-box">Click to Check!</p>
+        <button class="nextBtn" id="next-btn">NEXT</button>
+        <div class="flex-container">
+            <div class="results-box">
+                <div class="lable">Questions Remaining</div>
+                <div class="value" id="remaining-questions"></div>
+            </div>
+            <div class="results-box">
+                <div class="lable">SCORE</div>
+                <div class="value" id="score">0</div>
+            </div>
+        </div>
         </div>
         <script src="questions.js" defer></script>
         <script src="script.js" defer></script>
+
+        <script>
+            function myFunction() {
+            var element = document.body;
+            element.classList.toggle("dark-mode");
+            mode.textContent = element.classList.contains("dark-mode") ? "Light" : "Dark";
+            }
+        </script>
+
     </body>
 </html>
