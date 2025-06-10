@@ -52,5 +52,15 @@ let myQuestions = [
           d: "Saturn"
         },
         correctAnswer: "c"
+      },
+      {
+        question: "Who painted the Mona Lisa?",
+        answers: {
+          a: "Vincent van Gogh",
+          b: "Pablo Picasso",
+          c: "Leonardo da Vinci",
+          d: "Michelangelo"
+        },
+        correctAnswer: "c"
       }
     ];
